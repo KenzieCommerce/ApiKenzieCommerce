@@ -47,7 +47,13 @@ THIRD_PARTY_APPS = [
     "rest_framework",
 ]
 
-MY_APPS = []
+MY_APPS = [
+    "addresses",
+    "carts",
+    "orders",
+    "products",
+    "users"
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
@@ -123,6 +129,8 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=15),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+AUTH_USER_MODEL = "users.User"
 
 # REST_FRAMEWORK = {
 #     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
