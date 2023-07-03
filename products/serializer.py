@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Product
+from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -7,3 +7,6 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ["id", "name", "category", "stock", "available", "price", "user"]
         extra_kwargs = {"user": {"read_only": True}}
+
+    def create(self, validated_data):
+        return super().create(**validated_data)
