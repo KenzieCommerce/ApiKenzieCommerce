@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Cart(models.Model):
+    products = models.ManyToManyField(
+        "products.Product",
+        related_name="cart"
+    )

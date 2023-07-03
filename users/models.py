@@ -7,3 +7,16 @@ class User(AbstractUser):
     is_employee = models.BooleanField(default=False)
     updated_at = models.DateField(auto_now=True)
 
+    cart = models.OneToOneField(
+        "carts.Cart",
+        on_delete=models.CASCADE,
+        related_name="user",
+        null=True
+    )
+
+    address = models.OneToOneField(
+        "addresses.Address",
+        on_delete=models.CASCADE,
+        related_name="user",
+        null=True
+    )
