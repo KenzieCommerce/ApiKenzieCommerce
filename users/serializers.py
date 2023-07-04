@@ -35,3 +35,20 @@ class UserSerializer(serializers.ModelSerializer):
         address_serializer.is_valid(raise_exception=True)
         address_serializer.save(user=user)
         return user
+
+    def update(self, instance, validated_data):
+        address_data = validated_data.pop("address", None)
+        if address_data:
+            address_serializer= AddressSerializer(data=address_data, partial=True)
+            address_serializer.is_valid(raise_exception=True)
+            address_serializer.save(user=instance)
+
+        for key, value in validated_data.items():
+            if key == "password":
+                instance.set_password(value)
+            else:
+                setattr(instance, key, value)
+
+            instance.save()
+
+        return instance
