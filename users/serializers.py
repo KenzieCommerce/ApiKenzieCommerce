@@ -39,10 +39,11 @@ class UserSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         address_data = validated_data.pop("address", None)
         if address_data:
-            address_serializer= AddressSerializer(data=address_data, partial=True)
+            address_serializer = AddressSerializer(data=address_data, partial=True)
             address_serializer.is_valid(raise_exception=True)
             address_serializer.save(user=instance)
-
+            
+            # PRECISO TORNA OS CAMPOS DO USER COMO PARTIAL-----------------------------
         for key, value in validated_data.items():
             if key == "password":
                 instance.set_password(value)
@@ -52,3 +53,15 @@ class UserSerializer(serializers.ModelSerializer):
             instance.save()
 
         return instance
+
+
+class UserProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "username",
+            "email",
+            "is_employee",
+            "is_superuser",
+        ]
