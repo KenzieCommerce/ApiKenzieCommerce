@@ -26,3 +26,12 @@ class UserSerializer(serializers.ModelSerializer):
             "updated_at",
             "address",
         ]
+        extra_kwargs = {"password": {"write_only": True}}
+
+    def create(self, validated_data):
+        address_data = validated_data.pop("address")
+        user = User.objects.create_user(**validated_data)
+        address_serializer = AddressSerializer(data=address_data)
+        address_serializer.is_valid(raise_exception=True)
+        address_serializer.save(user=user)
+        return user
