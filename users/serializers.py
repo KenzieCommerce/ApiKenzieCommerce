@@ -43,9 +43,10 @@ class UserSerializer(serializers.ModelSerializer):
             address_serializer.is_valid(raise_exception=True)
             address_serializer.save(user=instance)
 
-            print(instance.__dict__)
-            # TENHO QUE PEGAR, O USER ADMIN PELO TOKEN 
-        if instance.is_superuser == True:
+            # print(self.context["request"].user.is_superuser)
+            # forma de pegar o o user via token
+            
+        if self.context["request"].user.is_superuser == True:
             for key, value in validated_data.items():
                 if key == "password":
                     instance.set_password(value)
