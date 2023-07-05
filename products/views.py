@@ -2,10 +2,13 @@ from rest_framework import generics
 from .models import Product
 from .serializer import ProductSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from users.permissions import IsAccountOwner
 
 
 class ProductView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAccountOwner]
+    authentication_classes=[JWTAuthentication]
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -14,4 +17,12 @@ class ProductView(generics.ListCreateAPIView):
 
 
 class ProductDeatilView(generics.RetrieveUpdateDestroyAPIView):
-    ...
+    queryset = Product.objects.filter(pk=product_id)
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
