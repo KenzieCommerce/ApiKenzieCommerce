@@ -1,32 +1,27 @@
 from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from products.models import Product
-from .models import Cart
-from .serializer import CartSerializer
-
-class CartView(generics.ListCreateAPIView):
+from rest_framework.permissions import IsAuthenticated
+from .models import Cart, CartProducts
+from django.shortcuts import get_object_or_404
+from .permissions import IsSuperUser
+from .serializer import CartSerializer,CartProductSerializer, CartListSerializer
+   
+class ListCartView(generics.ListAPIView):
     authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     queryset = Cart.objects.all()
-    serializer_class = CartSerializer
-    
+    serializer_class = CartListSerializer
+
     def get_queryset(self):
-        pk = self.kwargs['pk']
-        return Cart.objects.filter(user_id=pk)
-
-    def perform_create(self, serializer):
-        cart_products = Cart.objects.all()
-        for cart_product in cart_products:
-                stock = cart_product.stock
-                quantity = cart_product.quantity
-                if stock < quantity:
-                    raise serializer.ValidationError(f"Insufficient stock for product '{cart_product.name}'")
-                stock -= quantity
-                cart_product.save()
-
+        cart = get_object_or_404(Cart.objects.filter(user=self.request.user))
+        cart_products = CartProducts.objects.filter(cart=cart)
         return cart_products
     
 
+       
+   
     
   
 
