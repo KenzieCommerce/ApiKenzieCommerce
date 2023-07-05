@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Product
 
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
@@ -8,9 +9,7 @@ class ProductSerializer(serializers.ModelSerializer):
         extra_kwargs = {"user": {"read_only": True}}
 
     def create(self, validated_data):
-
         # user = validated_data.pop("user")
-
 
         user = self.context["request"].user
 

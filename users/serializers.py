@@ -26,7 +26,12 @@ class UserSerializer(serializers.ModelSerializer):
             "updated_at",
             "address",
         ]
-        extra_kwargs = {"password": {"write_only": True}}
+        extra_kwargs = {
+            "password": {"write_only": True},
+            "first_name": {"required": True},
+            "last_name": {"required": True},
+            "is_superuser": {"read_only": True},
+        }
 
     def create(self, validated_data):
         address_data = validated_data.pop("address")
@@ -45,8 +50,8 @@ class UserSerializer(serializers.ModelSerializer):
 
             # print(self.context["request"].user.is_superuser)
             # forma de pegar o o user via token
-            
-        if self.context["request"].user.is_superuser == True:
+
+        if self.context["request"].user.is_superuser:
             for key, value in validated_data.items():
                 if key == "password":
                     instance.set_password(value)
@@ -66,15 +71,3 @@ class UserSerializer(serializers.ModelSerializer):
                 instance.save()
 
         return instance
-
-
-class UserProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            "id",
-            "username",
-            "email",
-            "is_employee",
-            "is_superuser",
-        ]
