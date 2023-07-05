@@ -42,15 +42,27 @@ class UserSerializer(serializers.ModelSerializer):
             address_serializer = AddressSerializer(data=address_data, partial=True)
             address_serializer.is_valid(raise_exception=True)
             address_serializer.save(user=instance)
-            
-            # PRECISO TORNA OS CAMPOS DO USER COMO PARTIAL-----------------------------
-        for key, value in validated_data.items():
-            if key == "password":
-                instance.set_password(value)
-            else:
-                setattr(instance, key, value)
 
-            instance.save()
+            print(instance.__dict__)
+            # TENHO QUE PEGAR, O USER ADMIN PELO TOKEN 
+        if instance.is_superuser == True:
+            for key, value in validated_data.items():
+                if key == "password":
+                    instance.set_password(value)
+                else:
+                    setattr(instance, key, value)
+
+                instance.save()
+        else:
+            for key, value in validated_data.items():
+                if key == "password":
+                    instance.set_password(value)
+                elif key == "is_superuser":
+                    key == instance.is_superuser
+                else:
+                    setattr(instance, key, value)
+
+                instance.save()
 
         return instance
 
