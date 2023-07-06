@@ -45,7 +45,7 @@ class UserSerializer(serializers.ModelSerializer):
         address_serializer.is_valid(raise_exception=True)
         address_serializer.save(user=user)
 
-        Cart.objects.create(user_id=user.id)
+        Cart.objects.create(user=user)
         return user
 
     def update(self, instance, validated_data):
