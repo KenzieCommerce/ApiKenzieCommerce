@@ -1,7 +1,6 @@
 from rest_framework import generics
 from .models import Product
 from .serializer import ProductSerializer
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from products.permissions import MyCustomPermission
 from .filters import ProductFilter
@@ -23,7 +22,11 @@ class ProductView(generics.ListCreateAPIView):
 
 
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
-    # queryset = Product.objects.filter(pk=product_id)
+    queryset = Product.objects.all()
+    permission_classes = [MyCustomPermission]
+    authentication_classes = [JWTAuthentication]
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 

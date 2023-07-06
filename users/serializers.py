@@ -2,6 +2,8 @@ from rest_framework import serializers
 from users.models import User
 from rest_framework.validators import UniqueValidator
 from addresses.serializers import AddressSerializer
+from carts.serializer import CartSerializer
+from carts.models import Cart
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -10,6 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     )
 
     address = AddressSerializer()
+    cart = CartSerializer(read_only=True)
 
     class Meta:
         model = User
@@ -25,6 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
             "date_joined",
             "updated_at",
             "address",
+            "cart",
         ]
         extra_kwargs = {
             "password": {"write_only": True},
@@ -36,9 +40,12 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         address_data = validated_data.pop("address")
         user = User.objects.create_user(**validated_data)
+
         address_serializer = AddressSerializer(data=address_data)
         address_serializer.is_valid(raise_exception=True)
         address_serializer.save(user=user)
+
+        Cart.objects.create(user=user)
         return user
 
     def update(self, instance, validated_data):
