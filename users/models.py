@@ -5,7 +5,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_employee = models.BooleanField(default=False)
-    updated_at = models.DateField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
   
     address = models.OneToOneField(
