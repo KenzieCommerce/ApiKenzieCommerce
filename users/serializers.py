@@ -4,6 +4,7 @@ from rest_framework.validators import UniqueValidator
 from addresses.serializers import AddressSerializer
 from carts.serializer import CartSerializer
 from carts.models import Cart
+from addresses.models import Address
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -39,11 +40,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         address_data = validated_data.pop("address")
-        user = User.objects.create_user(**validated_data)
+        address = Address.objects.create(**address_data)
 
-        address_serializer = AddressSerializer(data=address_data)
-        address_serializer.is_valid(raise_exception=True)
-        address_serializer.save(user=user)
+        user = User.objects.create_user(**validated_data, address = address)
 
         Cart.objects.create(user=user)
         return user
@@ -78,3 +77,4 @@ class UserSerializer(serializers.ModelSerializer):
                 instance.save()
 
         return instance
+

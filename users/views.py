@@ -18,10 +18,6 @@ class UserListAdmView(generics.ListAPIView):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    
-    def get(self, request, *args, **kwargs):
-        print(self)
-        return super().get(request, *args, **kwargs)
 
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
