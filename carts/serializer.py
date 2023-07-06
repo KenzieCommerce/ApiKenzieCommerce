@@ -32,4 +32,4 @@ class CartSerializer(serializers.ModelSerializer):
         model = Cart
         fields = ["id", "user", "products"]
         extra_kwargs = {"user": {"read_only": True}, "products": {"read_only": True}}
-        depth =1
+        # depth =1
