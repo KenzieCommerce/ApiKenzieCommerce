@@ -22,3 +22,4 @@ class CartProducts(models.Model):
     product = models.ForeignKey(
         "products.Product",on_delete=models.CASCADE, related_name = "product_pivo"
     )
+    # quantity = models.PositiveIntegerField(default=1)
