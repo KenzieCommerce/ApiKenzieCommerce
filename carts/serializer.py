@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Cart,CartProducts
 from products.serializer import ProductSerializer
 from products.models import Product
-from rest_framework.response import Response
 from rest_framework import status
 
 class CartProductSerializer(serializers.ModelSerializer):
@@ -43,4 +42,4 @@ class CartSerializer(serializers.ModelSerializer):
             instance.save()
             return instance
         error_message = "Produto indisponível ou não encontrado."
-        return Response({"detail": error_message}, status=status.HTTP_404_NOT_FOUND)
+        raise serializers.ValidationError({"detail": error_message})
