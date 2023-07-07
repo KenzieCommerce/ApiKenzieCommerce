@@ -28,15 +28,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-ezyx4g8&(@e$v^9k0g&ak7e=qdc-^+qt))ra4k-6wp27du!vcq"
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-RAILWAY_STATIC_URL = os.getenv("RAILWAY_STATIC_URL")
-if RAILWAY_STATIC_URL:
-    ALLOWED_HOSTS += [RAILWAY_STATIC_URL, "0.0.0.0"]
+RENDER_EXTERNAL_HOSTNAME = os.getenv("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS +=[RENDER_EXTERNAL_HOSTNAME, "0.0.0.0"]
 
 # Application definition
 DJANGO_APPS = [
