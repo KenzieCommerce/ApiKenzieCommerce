@@ -12,6 +12,5 @@ class IsAccountOwnerAdmin(permissions.BasePermission):
 
 class IsEmployee(permissions.BasePermission):
     def has_object_permission(self, request, view: View, obj: User):
-        print(request.user.is_employee)
         if request.user.is_employee or request.user.is_superuser:
             return True
