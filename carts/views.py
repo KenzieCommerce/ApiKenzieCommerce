@@ -44,4 +44,11 @@ class CartAddProductView(generics.UpdateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
 
-# TENTAR FAZER COM A MODEL DE USER E PEGAR O CART PELO ID
+
+class CartDestroyView(generics.DestroyAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = CartProducts.objects.all()
+    serializer_class = CartProductSerializer
+    def delete(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
