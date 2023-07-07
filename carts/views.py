@@ -5,9 +5,8 @@ from products.models import Product
 from rest_framework.permissions import IsAuthenticated
 from .models import Cart, CartProducts
 from django.shortcuts import get_object_or_404
-from .permissions import IsSuperUser
+from .permissions import IsOwnerOrAdm
 from .serializer import CartSerializer, CartProductSerializer, CartListSerializer
-from users.models import User
 
 
 class ListCartView(generics.ListAPIView):
@@ -39,6 +38,9 @@ class CartDetailView(generics.DestroyAPIView):
                          status=status.HTTP_204_NO_CONTENT)
     
 class CartAddProductView(generics.UpdateAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated, IsOwnerOrAdm]
+
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
 
