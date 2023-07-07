@@ -35,7 +35,7 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ["id", "user", "products"]
 
     def update(self, instance, validated_data):
-        product_id=self._kwargs["data"]["products"]
+        product_id=self._kwargs["data"]["product_id"]
         get_product = Product.objects.filter(id=product_id).first()
         instance.products.add(get_product)
         instance.save()
