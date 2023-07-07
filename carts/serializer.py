@@ -35,6 +35,13 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ["id", "user", "products"]
 
     def update(self, instance, validated_data):
+        remove_product_id=self._kwargs["data"]["remove_product_id"]
+        if remove_product_id :
+            get_product = Product.objects.filter(id=remove_product_id).first()
+            instance.products.remove(get_product)
+            instance.save()
+            return instance
+        
         product_id=self._kwargs["data"]["product_id"]
         get_product = Product.objects.filter(id=product_id).first()
         if get_product.available:
@@ -42,4 +49,4 @@ class CartSerializer(serializers.ModelSerializer):
             instance.save()
             return instance
         error_message = "Produto indisponível ou não encontrado."
-        raise serializers.ValidationError({"detail": error_message})
+        raise serializers.ValidationError(error_message, code='not_found')
