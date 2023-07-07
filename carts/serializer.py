@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Cart,CartProducts
 from products.serializer import ProductSerializer
+from products.models import Product
 
 class CartProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,8 +30,19 @@ class CartListSerializer(serializers.ModelSerializer):
 
 
 class CartSerializer(serializers.ModelSerializer):
+    products = ProductSerializer(many=True, read_only=True)
     class Meta:
         model = Cart
         fields = ["id", "user", "products"]
+<<<<<<< HEAD
         extra_kwargs = {"user": {"read_only": True}, "products": {"read_only": True}}
         
+=======
+
+    def update(self, instance, validated_data):
+        product_id=self._kwargs["data"]["products"]
+        get_product = Product.objects.filter(id=product_id).first()
+        instance.products.add(get_product)
+        instance.save()
+        return instance
+>>>>>>> a27ac1a29696482275ab1882a2961f17889bb7ed
