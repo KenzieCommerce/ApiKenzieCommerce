@@ -21,20 +21,6 @@ class ListCartView(generics.ListAPIView):
         return cart_products
     
 
-class CartDetailView(generics.DestroyAPIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-    queryset = CartProducts.objects.all()
-    serializer_class = CartProductSerializer
 
-    def delete(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        cart = get_object_or_404(Cart.objects.filter(user=request.user))
-        cart_products = get_object_or_404(CartProducts.objects.filter(cart=cart))
-        product = get_object_or_404(Product, pk=pk)
-        if product in cart_products.products.all():
-            cart_products.products.remove(product)
-        cart_products.save()
-        return Response( {"message": "Produto deletado com sucesso."},
-                         status=status.HTTP_204_NO_CONTENT)
+ 
     
