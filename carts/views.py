@@ -5,9 +5,8 @@ from products.models import Product
 from rest_framework.permissions import IsAuthenticated
 from .models import Cart, CartProducts
 from django.shortcuts import get_object_or_404
-from .permissions import IsSuperUser
+from .permissions import IsOwnerOrAdm
 from .serializer import CartSerializer, CartProductSerializer, CartListSerializer
-from users.models import User
 
 
 class ListCartView(generics.ListAPIView):
@@ -24,8 +23,9 @@ class ListCartView(generics.ListAPIView):
 
  
     
-class CartAddProductView(generics.UpdateAPIView):
+class CartAddRemoveProductView(generics.UpdateAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated, IsOwnerOrAdm]
+
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-
-# TENTAR FAZER COM A MODEL DE USER E PEGAR O CART PELO ID
