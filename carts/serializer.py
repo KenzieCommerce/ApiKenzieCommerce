@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Cart,CartProducts
 from products.serializer import ProductSerializer
 from products.models import Product
+from rest_framework.response import Response
+from rest_framework import status
 
 class CartProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,7 +29,6 @@ class CartListSerializer(serializers.ModelSerializer):
         fields = ["id", "cart","product"]
         read_only_fields = ["cart"]
 
-
 class CartSerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True, read_only=True)
     class Meta:
@@ -37,6 +38,9 @@ class CartSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         product_id=self._kwargs["data"]["product_id"]
         get_product = Product.objects.filter(id=product_id).first()
-        instance.products.add(get_product)
-        instance.save()
-        return instance
+        if get_product.available:
+            instance.products.add(get_product)
+            instance.save()
+            return instance
+        error_message = "Produto indisponível ou não encontrado."
+        return Response({"detail": error_message}, status=status.HTTP_404_NOT_FOUND)
