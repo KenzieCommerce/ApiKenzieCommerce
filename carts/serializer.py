@@ -34,10 +34,8 @@ class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = ["id", "user", "products"]
-<<<<<<< HEAD
         extra_kwargs = {"user": {"read_only": True}, "products": {"read_only": True}}
         
-=======
 
     def update(self, instance, validated_data):
         product_id=self._kwargs["data"]["products"]
@@ -45,4 +43,3 @@ class CartSerializer(serializers.ModelSerializer):
         instance.products.add(get_product)
         instance.save()
         return instance
->>>>>>> a27ac1a29696482275ab1882a2961f17889bb7ed

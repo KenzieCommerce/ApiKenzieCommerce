@@ -45,6 +45,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "drf_spectacular",
 ]
 
 MY_APPS = ["addresses", "carts", "orders", "products", "users"]
@@ -126,10 +127,12 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
 
-# REST_FRAMEWORK = {
+REST_FRAMEWORK = {
 #     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
 #     "PAGE_SIZE": 2,
-# }
+'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+ }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -152,3 +155,14 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Kenzie Commerce',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+   
+}
+    
+    
+
