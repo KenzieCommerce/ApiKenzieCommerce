@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Status(models.TextChoices):
-    ANDAMENTO = "ANDAMENTO"
+    ANDAMENTO = "EM ANDAMENTO"
     REALIZADO = "REALIZADO"
     ENTREGUE = "ENTREGUE"
 

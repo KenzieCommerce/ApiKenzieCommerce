@@ -26,7 +26,8 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [MyCustomPermission]
     authentication_classes = [JWTAuthentication]
     serializer_class = ProductSerializer
-    lookup_field = 'pk'
+    lookup_field = "pk"
+
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 

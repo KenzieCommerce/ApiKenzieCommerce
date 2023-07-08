@@ -1,12 +1,11 @@
 from rest_framework import generics
-from rest_framework.views import  Response, status
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from products.models import Product
 from rest_framework.permissions import IsAuthenticated
 from .models import Cart, CartProducts
 from django.shortcuts import get_object_or_404
 from .permissions import IsOwnerOrAdm
-from .serializer import CartSerializer, CartProductSerializer, CartListSerializer
+from .serializer import CartSerializer, CartListSerializer
 
 
 class ListCartView(generics.ListAPIView):
@@ -21,8 +20,6 @@ class ListCartView(generics.ListAPIView):
         return cart_products
 
 
- 
-    
 class CartAddRemoveProductView(generics.UpdateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, IsOwnerOrAdm]
