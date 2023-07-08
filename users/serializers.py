@@ -42,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
         address_data = validated_data.pop("address")
         address = Address.objects.create(**address_data)
 
-        user = User.objects.create_user(**validated_data, address = address)
+        user = User.objects.create_user(**validated_data, address=address)
 
         Cart.objects.create(user=user)
         return user
@@ -77,4 +77,3 @@ class UserSerializer(serializers.ModelSerializer):
                 instance.save()
 
         return instance
-

@@ -4,8 +4,7 @@ from .models import Order
 from .serializer import OrderSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAdminUser
-from .permissions import IsOrderOwner
+from products.permissions import MyCustomPermission
 
 
 # Create your views here.
@@ -21,7 +20,7 @@ class OrderView(generics.ListCreateAPIView):
 
 class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAdminUser | IsOrderOwner]
+    permission_classes = [MyCustomPermission]
 
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
