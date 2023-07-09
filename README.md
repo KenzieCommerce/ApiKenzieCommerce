@@ -7,6 +7,13 @@ https://kenziecommerce-k4me.onrender.com/api/docs/swagger-ui/
 # Deploy da aplicação:
 https://kenziecommerce-k4me.onrender.com
 
+### Features
+
+- [x] Cadastro de usuário comum ou funcionário
+- [x] Cadastro e listagem de produtos
+- [x] Cadastro  e listagem de pedidos
+- [x] Carrinho de compras adição e remoção de produtos
+- [ ] Criação de superusuário (admin)
 ## Endpoints:
 <br/>
 
