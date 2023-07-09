@@ -1,5 +1,6 @@
 # ApiKenzieCommerce
 Projeto final M5
+<p>Api para gerenciamento de e-commerce em Django restframework</p>
 <br/>
 # Doc:
 https://kenziecommerce-k4me.onrender.com/api/docs/swagger-ui/
