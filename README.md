@@ -42,6 +42,6 @@ https://kenziecommerce-k4me.onrender.com
 |GET |  api/orders/:id/| Busca um pedido específico pelo id | Apenas o dono da conta |
 |POST | api/orders/| Cria um pedido | Usuário logado  |
 |PUT | api/orders/:id/| Atualiza o pedido | Usuário logado |
-|PATCH | api/orders/:id/| Atualiza parcialmente o pedido |  Usário logado 
+|PATCH | api/orders/:id/| Atualiza parcialmente o pedido |  Usário logado |
 
 
