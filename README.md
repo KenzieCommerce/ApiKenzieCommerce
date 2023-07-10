@@ -41,9 +41,9 @@ https://kenziecommerce-k4me.onrender.com
 
 | Método | Endpoint                   | Responsabilidade                                  | Autenticação                           |
 | ------ | -------------------------- | ------------------------------------------------- | -------------------------------------- |
-| GET | api/products/                 | Listar todos os produtos                           | Apenas adm e funcionários 
+| GET | api/products/                 | Listar todos os produtos                           | Qualquer usuário 
 | POST| api/products/                 | Cadastrar um produto                              | Apenas adm e funcionários
-| GET|  api/products/:id/                | Busca um produto pelo id                                    | Apenas adm e funcionários
+| GET|  api/products/:id/                | Busca um produto pelo id                                    | Qualquer usuário
 |PATCH| api/products/:id/                   | Atualiza parcialmente informções de um produto           | Apenas adm e funcionários
 |DELETE|api/product/:id/                      | Exclui um produto do banco de dados                  | Apenas adm e funcionários
 
