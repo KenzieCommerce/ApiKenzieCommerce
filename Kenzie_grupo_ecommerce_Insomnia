@@ -1,0 +1,568 @@
+_type: export
+__export_format: 4
+__export_date: 2023-07-06T19:57:10.281Z
+__export_source: insomnia.desktop.app:v2023.4.0
+resources:
+  - _id: req_b8a831198ea34c9dbaf1557ed6736ff8
+    parentId: fld_ed4f21b6d25f4ae5899d9b4e80c4afb8
+    modified: 1688653730467
+    created: 1688652881904
+    url: "{{ _.baseURL }}/orders"
+    name: Get all orders
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688652881904
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ed4f21b6d25f4ae5899d9b4e80c4afb8
+    parentId: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    modified: 1688652879837
+    created: 1688652879837
+    name: Orders
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688652879837
+    _type: request_group
+  - _id: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    parentId: null
+    modified: 1688409348239
+    created: 1688409348239
+    name: Kenzie_Commerce_API
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_ce6b299d282b4f9185a9b660da6360ba
+    parentId: fld_1d8f0d4c21f5499d968be30b0f714744
+    modified: 1688672774835
+    created: 1688652882608
+    url: "{{ _.baseURL }}/users/17/cart/"
+    name: Add on cart
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"product_id": 11
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688652882608
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_1d8f0d4c21f5499d968be30b0f714744
+    parentId: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    modified: 1688652872796
+    created: 1688652872796
+    name: Cart
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688652872796
+    _type: request_group
+  - _id: req_a1f5bbc6a1c6443bbdfa56e7911a3375
+    parentId: fld_1d8f0d4c21f5499d968be30b0f714744
+    modified: 1688670951502
+    created: 1688670767386
+    url: "{{ _.baseURL }}/user/:user_id/cart/"
+    name: Delete Product in cart
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"product_id": 11
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688652882545.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_edd59b403e744d08a4cd6bc7be073f16
+    parentId: fld_1d8f0d4c21f5499d968be30b0f714744
+    modified: 1688670952875
+    created: 1688653743534
+    url: "{{ _.baseURL }}/users/cart"
+    name: Get all products in cart
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688652882495.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e5f97e2f29864543b6f6175b98791757
+    parentId: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    modified: 1688670466540
+    created: 1688486339884
+    url: "{{ _.baseURL }}/users/login/"
+    name: login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        "username": "user11",
+        "password": "1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688486339884
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    parentId: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    modified: 1688648420682
+    created: 1688648420682
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688648420682
+    _type: request_group
+  - _id: req_c906914c8ac745d78de343062c8b5a14
+    parentId: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    modified: 1688651081187
+    created: 1688648897551
+    url: "{{ _.baseURL }}/users/5"
+    name: Patch User
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Nome atualizado",
+        	"username": "username_atualizado"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688486339859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ec76aaf88c134450bcb42f8e37a20cc6
+    parentId: fld_6d1055a775fc491fa28d28f7be76b8c5
+    modified: 1688670444637
+    created: 1688651433347
+    url: "{{ _.baseURL }}/users/"
+    name: Create Employee
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "employee",
+        	"first_name": "Adriano",
+        	"last_name": "Travers",
+        	"email": "employee@mail.com",
+        	"password": 1234,
+        	"is_employee": true,
+        	"address": {
+        		"street_name": "test_rua",
+        		"city": "test_city",
+        		"number": 123,
+        		"zip_code":10
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688651433347
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_6d1055a775fc491fa28d28f7be76b8c5
+    parentId: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    modified: 1688651480848
+    created: 1688651477866
+    name: Create
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688486339857.4375
+    _type: request_group
+  - _id: req_2134222c22034c6fba0ecd776c7165c6
+    parentId: fld_6d1055a775fc491fa28d28f7be76b8c5
+    modified: 1688670456916
+    created: 1688651524358
+    url: "{{ _.baseURL }}/users/"
+    name: Create user
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "user11",
+        	"first_name": "test",
+        	"last_name": "jr",
+        	"email": "user11@mail.com",
+        	"password": 1234,
+        	"is_employee": false,
+        	"address": {
+        		"street_name": "test_rua",
+        		"city": "test_city",
+        		"number": 123,
+        		"zip_code":10
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688651433297
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_255df5f612b84b58bcdd9078a8dc13b4
+    parentId: fld_6d1055a775fc491fa28d28f7be76b8c5
+    modified: 1688651595920
+    created: 1688651536731
+    url: "{{ _.baseURL }}/users/"
+    name: (error) no username
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name": "Adriano",
+        	"last_name": "Travers",
+        	"email": "employee@mail.com",
+        	"password": 1234,
+        	"is_employee": true,
+        	"address": {
+        		"street_name": "test_rua",
+        		"city": "test_city",
+        		"number": 123,
+        		"zip_code":10
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688651433247
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_dde3287314094c71bdba474b465459a8
+    parentId: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    modified: 1688651396283
+    created: 1688651274372
+    url: "{{ _.baseURL }}/users/14"
+    name: New Request
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688486339855.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4634ebb3d5614059bbf1893f9aff2397
+    parentId: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    modified: 1688651496518
+    created: 1688649808869
+    url: "{{ _.baseURL }}/users/adm"
+    name: Get all users (only_superuser)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688486339854.3125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_61e9508ae0684a92b4fd356e84b48d63
+    parentId: fld_ffa19499b5f24a64aae15d9951b7f7d3
+    modified: 1688651272167
+    created: 1688648893113
+    url: "{{ _.baseURL }}/users/1"
+    name: Delete User
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688486339846.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_094264708a9b4c41be4080ccd48d05f8
+    parentId: fld_9e5fdf3680c544ac9033259585ebd54d
+    modified: 1688648749076
+    created: 1688409351463
+    url: "{{ _.baseURL }}/products/"
+    name: Create product
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Fogão",
+        	"category": "eletrodomésticos",
+        	"stock": 30,
+        	"price": 3500.00
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688409351463
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9e5fdf3680c544ac9033259585ebd54d
+    parentId: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    modified: 1688561982963
+    created: 1688561982963
+    name: Products
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688561982963
+    _type: request_group
+  - _id: req_48a8debcf5f64c468211e42499d0e3b3
+    parentId: fld_9e5fdf3680c544ac9033259585ebd54d
+    modified: 1688648777223
+    created: 1688562006396
+    url: "{{ _.baseURL }}/products/{{ _.product_id }}/"
+    name: Update product
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Produto com nome mudado",
+        	"price": 1600
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688409351450.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e978bd08bbab4c3a99ee26d1a6f8a81c
+    parentId: fld_9e5fdf3680c544ac9033259585ebd54d
+    modified: 1688648692746
+    created: 1688562059835
+    url: "{{ _.baseURL }}/products/{{ _.product_id }}/"
+    name: Delete product
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1688409351438
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_33785ea823c54e41b53ffa25866bfc1b
+    parentId: fld_9e5fdf3680c544ac9033259585ebd54d
+    modified: 1688582152606
+    created: 1688411130827
+    url: "{{ _.baseURL }}/products"
+    name: Get all products
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1688409351413
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a811f87f97364a4aa4e1e1f88a6fa08a
+    parentId: fld_9e5fdf3680c544ac9033259585ebd54d
+    modified: 1688648722575
+    created: 1688561995695
+    url: "{{ _.baseURL }}/products/{{ _.product_id }}"
+    name: Retrieve product
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1688409351363
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_b59b2c12e648d5b514211cf4c7444d8d3a06767b
+    parentId: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    modified: 1688651044058
+    created: 1688409348250
+    name: Base Environment
+    data:
+      baseURL: http://127.0.0.1:8000/api
+      token: "{% response 'body', 'req_e5f97e2f29864543b6f6175b98791757',
+        'b64::JC5hY2Nlc3M=::46b', 'never', 60 %}"
+      product_id: "{% response 'body', 'req_094264708a9b4c41be4080ccd48d05f8',
+        'b64::JC5pZA==::46b', 'never', 60 %}"
+    dataPropertyOrder:
+      "&":
+        - baseURL
+        - token
+        - product_id
+    color: null
+    isPrivate: false
+    metaSortKey: 1688409348250
+    _type: environment
+  - _id: jar_b59b2c12e648d5b514211cf4c7444d8d3a06767b
+    parentId: wrk_4d9d3ed1044e4dca8dcb10919428160d
+    modified: 1688409348253
+    created: 1688409348253
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
