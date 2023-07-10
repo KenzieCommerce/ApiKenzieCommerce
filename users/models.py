@@ -12,5 +12,5 @@ class User(AbstractUser):
         "addresses.Address",
         on_delete=models.CASCADE,
         related_name="user",
-        # null=True
+        null=True
     )
