@@ -17,7 +17,7 @@ https://kenziecommerce-k4me.onrender.com
 
 - [x] Cadastro de usuário comum ou funcionário
 - [x] Cadastro e listagem de produtos
-- [x] Cadastro  e listagem de pedidos
+- [x] Listagem de pedidos
 - [x] Carrinho de compras adição e remoção de produtos
 - [ ] Criação de superusuário (admin)
 ## Endpoints:
