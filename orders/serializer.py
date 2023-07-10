@@ -13,7 +13,12 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ["id", "status", "created_at", "updated_at", "user"]
         read_only_fields = ["created_at", "updated_at", "user"]
 
-    # def create(self, validated_data):
-    #     print(self.get_attribute)
-    #     user = get_object_or_404(User, username=validated_data["user"])
-    #     return super().create(validated_data)
+    def create(self, validated_data):
+        result = super().create(validated_data)
+        products = validated_data["user"].cart.products.all()
+
+        for product in products:
+            product.stock -= 1
+            product.save()
+            result.products.add(product)
+        return result
