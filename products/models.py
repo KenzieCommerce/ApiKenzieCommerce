@@ -9,13 +9,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     user = models.ForeignKey(
-        "users.User",
-        on_delete=models.PROTECT,
-        related_name="product"
+        "users.User", on_delete=models.PROTECT, related_name="product"
     )
 
-    order = models.ManyToManyField(
-        "orders.Order",
-        related_name="products"
-    )
-
+    order = models.ManyToManyField("orders.Order", related_name="products")
