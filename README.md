@@ -52,10 +52,9 @@ https://kenziecommerce-k4me.onrender.com
 
 | Método | Endpoint                   | Responsabilidade                                  | Autenticação                           |
 | ------ | -------------------------- | ------------------------------------------------- | -------------------------------------- |
-|GET | api/orders/                     |  Lista todos os pedidos                          | Apenas o dono da conta |
+|GET | api/orders/                     |  Lista todos os pedidos do site                         | Apenas adm |
 |GET |  api/orders/:id/                | Busca um pedido específico pelo id                                | Apenas o dono da conta |
 |POST | api/orders/                    | Cria um pedido                                                        | Usuário logado  |
-|PUT | api/orders/:id/                    | Atualiza o pedido                                                  | Usuário logado |
-|PATCH | api/orders/:id/                  | Atualiza parcialmente o pedido                                  |  Usário logado |
+|PATCH | api/orders/:id/                    | Atualiza o pedido                                                  | apenas vendedor |
 
 

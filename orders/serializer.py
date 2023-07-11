@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from .models import Order
-from users.serializers import UserSerializer, UserReturnSerializer
-from django.shortcuts import get_object_or_404
-from users.models import User
+from users.serializers import UserReturnSerializer
 from products.serializer import ReadProductsSerializer
 
 
@@ -21,6 +19,11 @@ class OrderSerializer(serializers.ModelSerializer):
         cart = validated_data["user"].cart
 
         for product in products:
+            if product.stock == 0:
+                cart.products.clear()
+                raise serializers.ValidationError(
+                    {"msg": "o produto não está mais disponível"}
+                )
             product.stock -= 1
             product.save()
             result.products.add(product)
