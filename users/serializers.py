@@ -77,3 +77,20 @@ class UserSerializer(serializers.ModelSerializer):
                 instance.save()
 
         return instance
+
+
+class UserReturnSerializer(serializers.ModelSerializer):
+    address = AddressSerializer(read_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "date_joined",
+            "updated_at",
+            "address",
+        ]
