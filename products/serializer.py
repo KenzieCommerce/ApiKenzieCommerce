@@ -3,10 +3,20 @@ from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    seller_name = serializers.CharField(source="user")
+
     class Meta:
         model = Product
-        fields = ["id", "name", "category", "stock", "available", "price", "user"]
-        extra_kwargs = {"user": {"read_only": True}}
+        fields = [
+            "id",
+            "name",
+            "category",
+            "stock",
+            "available",
+            "price",
+            "seller_name",
+        ]
+        extra_kwargs = {"seller_name": {"read_only": True}}
 
     def create(self, validated_data):
         # user = validated_data.pop("user")
@@ -20,3 +30,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
         product = Product.objects.create(user=user, **validated_data)
         return product
+
+
+class ReadProductsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ["id", "name", "category", "price", "available"]
