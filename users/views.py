@@ -9,9 +9,6 @@ from rest_framework.permissions import IsAdminUser
 class UserView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
-    # queryset = User.objects.all()
-
-
 class UserListAdmView(generics.ListAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAdminUser]
