@@ -54,9 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
             address_serializer.is_valid(raise_exception=True)
             address_serializer.save(user=instance)
 
-            # print(self.context["request"].user.is_superuser)
-            # forma de pegar o o user via token
-
+        
         if self.context["request"].user.is_superuser:
             for key, value in validated_data.items():
                 if key == "password":

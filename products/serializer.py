@@ -19,8 +19,7 @@ class ProductSerializer(serializers.ModelSerializer):
         extra_kwargs = {"seller_name": {"read_only": True}}
 
     def create(self, validated_data):
-        # user = validated_data.pop("user")
-
+       
         user = self.context["request"].user
 
         if validated_data.get("stock", 0) > 0:
