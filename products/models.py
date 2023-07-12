@@ -1,10 +1,12 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=40)
     stock = models.PositiveIntegerField()
+    image = ArrayField(models.CharField())
     available = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
